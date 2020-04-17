@@ -2,11 +2,17 @@ from django.contrib.auth.models import User
 from django.db.models import Count, Q
 from rest_framework import viewsets
 from .serializers import *
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from django.http import HttpResponse
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from django.contrib import messages
+from django.core.mail import send_mail
+from django.core.mail import EmailMessage
+from django.views.generic import View
+from django.core.files.storage import FileSystemStorage
+
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -184,4 +190,7 @@ def estadisticas(request):
                   not_survived_count=Count('tipo', filter=Q(tipo='Egreso'))) \
         .order_by('tipo ')
     return render(request, 'estadisticas.html', {'dataset': dataset})
+
+
+
 

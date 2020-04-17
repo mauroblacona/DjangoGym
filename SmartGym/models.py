@@ -4,6 +4,7 @@ from model_utils import Choices
 from django.utils.html import mark_safe
 from auditlog.registry import auditlog
 
+
 class Persona(models.Model):
     nombre = models.CharField('Nombres', max_length=120, null=True, blank=True)
     apellido = models.CharField('Apellidos', max_length=120, null=True, blank=True)
@@ -93,7 +94,7 @@ class ActividadAdmin(admin.ModelAdmin):
 
 
 class Horario(models.Model):
-    hora_inicio = models.CharField('Hora de Inicio', null=True, blank=True, max_length=150)
+    hora_inicio = models.CharField('Hora de Inicio', null=True, blank=True, max_length=150)x`
     hora_fin = models.CharField('Hora de Fin', null=True, blank=True, max_length=150)
     DIAS = Choices('Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo')
     dia = models.CharField('Dia de la Actividad', null=True, blank=True, choices=DIAS, max_length=150)
@@ -505,6 +506,7 @@ class RutinaXEjercicio(models.Model):
     peso = models.DecimalField('Peso', null=True, blank=True, max_digits=1000, decimal_places=5)
     repeticiones = models.IntegerField('Repeticiones', null=True, blank=True)
     series = models.IntegerField('Series', null=True, blank=True)
+     
     
 auditlog.register(Actividad)
 auditlog.register(Socio)

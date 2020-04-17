@@ -151,3 +151,4 @@ class RutinaXEjercicioSerializer(serializers.ModelSerializer):
     class Meta:
         model = RutinaXEjercicio
         fields = ('id', 'rutina', 'ejercicio', 'peso', 'repeticiones', 'series')
+        
